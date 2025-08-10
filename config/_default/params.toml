@@ -37,8 +37,8 @@ subtitle = "25届电子信息工程专业新生，记录学习，点滴成长。
 enabled = true
 # 头像是否为本地文件（true 表示使用本地图片，false 表示使用外部 URL）
 local = true
-# 头像图片路径（本地文件通常放在 static/img 目录下）
-src = "me.png"
+# 头像图片路径
+src = "img/me.png"
 
 # 文章相关配置
 [article]
