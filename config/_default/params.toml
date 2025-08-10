@@ -125,7 +125,7 @@ enabled = true
 ## 评论系统配置
 [comments]
 # 是否启用评论功能
-enabled = true
+enabled = false
 # 评论系统提供商（支持 disqus、utterances、giscus 等）
 provider = "disqus"
 
