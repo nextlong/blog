@@ -1,18 +1,29 @@
-# Change baseurl before deploy
+# Hugo 网站的基础 URL，部署前必须设置为实际域名
+# 用于生成正确的绝对链接，例如文章永久链接、静态资源路径等
 baseurl = "https://dev.soarfine.com"
-languageCode = "en-us"
-title = "Hugo Theme Stack Starter"
 
-# Theme i18n support
-# Available values: en, fr, id, ja, ko, pt-br, zh-cn, zh-tw, es, de, nl, it, th, el, uk, ar
-defaultContentLanguage = "en"
+# 网站的主要语言代码，遵循 ISO 639-1 标准
+# 影响 Hugo 生成的 HTML 页面中的 lang 属性
+languageCode = "zh-cn"
 
-# Set hasCJKLanguage to true if DefaultContentLanguage is in [zh-cn ja ko]
-# This will make .Summary and .WordCount behave correctly for CJK languages.
-hasCJKLanguage = false
+# 网站的标题，会显示在浏览器标题栏和默认主题的头部区域
+title = "Starry night"
 
-# Change it to your Disqus shortname before using
+# 主题的国际化支持配置
+# 指定默认内容语言，决定了 Hugo 优先加载哪个语言的内容文件
+# 可用值: en, fr, id, ja, ko, pt-br, zh-cn, zh-tw, es, de, nl, it, th, el, uk, ar
+defaultContentLanguage = "zh-cn"
+
+# 启用 CJK 语言支持（中文、日文、韩文）
+# 当 defaultContentLanguage 为 zh-cn、ja 或 ko 时需要设为 true
+# 开启后 Hugo 会正确处理这些语言的断句和字数统计（.Summary 和 .WordCount 功能）
+hasCJKLanguage = true
+
+# Disqus 评论系统的短名称
+# 配置后主题会在文章页面加载 Disqus 评论框，需先在 Disqus 官网注册站点
 disqusShortname = "hugo-theme-stack"
 
+# 分页配置区块
 [pagination]
-pagerSize = 5
+# 每页显示的内容数量（如文章列表每页显示的文章数）
+pagerSize = 10

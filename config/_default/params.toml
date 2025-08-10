@@ -1,84 +1,135 @@
-# Pages placed under these sections will be shown on homepage and archive page.
+# 指定哪些内容章节会显示在首页和归档页面
+# 例如设置为 ["post"] 表示只有 content/post 目录下的内容会被展示
 mainSections = ["post"]
-# Output page's full content in RSS.
+
+# 是否在 RSS 订阅中输出页面的完整内容
+# 设置为 true 时，订阅者可在 RSS 阅读器中查看全文
 rssFullContent = true
+
+# 网站图标（favicon）的路径
+# 通常放置在 static 目录下，这里填写相对于网站根目录的路径
 favicon = "/favicon.png"
 
+# 页脚配置
 [footer]
-since = 2020
+# 网站创建年份，用于页脚显示 "© 2020-2024" 这样的版权信息
+since = 2025
+# 页脚自定义文本，可添加额外的版权说明或其他信息
 customText = ""
 
+# 日期格式配置
 [dateFormat]
+# 文章发布日期的显示格式（遵循 Go 语言时间格式）
 published = "Jan 02, 2006"
+# 文章最后更新日期的显示格式
 lastUpdated = "Jan 02, 2006 15:04 MST"
 
+# 侧边栏配置
 [sidebar]
-emoji = "🍥"
-subtitle = "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+# 侧边栏显示的 emoji 图标
+emoji = "📜"
+# 侧边栏副标题文本
+subtitle = "25届电子信息工程专业新生，记录学习，点滴成长。"
 
+# 侧边栏头像配置
 [sidebar.avatar]
+# 是否启用头像显示
 enabled = true
+# 头像是否为本地文件（true 表示使用本地图片，false 表示使用外部 URL）
 local = true
-src = "img/avatar.png"
+# 头像图片路径（本地文件通常放在 static/img 目录下）
+src = "me.png"
 
+# 文章相关配置
 [article]
+# 是否在文章标题前显示锚点链接（方便直接跳转至对应章节）
 headingAnchor = false
+# 是否启用数学公式渲染（需要主题支持 MathJax 或 KaTeX）
 math = false
+# 是否显示文章阅读时间估计
 readingTime = true
 
+# 文章版权声明配置
 [article.license]
+# 是否在文章底部显示版权声明
 enabled = true
-default = "Licensed under CC BY-NC-SA 4.0"
+# 默认的版权声明文本
+default = "本博客所有文章除特别声明外，均采用 CC BY-NC-SA 4.0 CN 许可协议。转载请注明出处！"
 
-## Widgets
+## 首页组件配置（按顺序显示）
+# 搜索组件
 [[widgets.homepage]]
 type = "search"
 
+# 归档组件（显示最新文章）
 [[widgets.homepage]]
 type = "archives"
 
+# 归档组件参数：限制显示的文章数量
 [widgets.homepage.params]
 limit = 5
 
+# 分类组件
 [[widgets.homepage]]
 type = "categories"
 
+# 分类组件参数：限制显示的分类数量
 [widgets.homepage.params]
 limit = 10
 
+# 标签云组件
 [[widgets.homepage]]
 type = "tag-cloud"
 
+# 标签云组件参数：限制显示的标签数量
 [widgets.homepage.params]
 limit = 10
 
+# 页面组件：目录（Table of Contents）
 [[widgets.page]]
 type = "toc"
 
+# OpenGraph 和 Twitter 社交分享配置
 [opengraph.twitter]
+# Twitter 用户名（用于分享时的作者标识）
 site = ""
+# Twitter 卡片类型（summary_large_image 表示大图卡片）
 card = "summary_large_image"
 
+# 默认社交媒体分享图片配置
 [defaultImage.opengraph]
+# 是否启用默认分享图片
 enabled = false
+# 是否为本地图片
 local = false
+# 图片路径或 URL
 src = ""
 
+# 颜色主题配置
 [colorScheme]
+# 是否允许用户切换明暗主题
 toggle = true
+# 默认主题（auto 表示跟随系统，light 浅色，dark 深色）
 default = "auto"
 
+# 图片处理配置（封面图）
 [imageProcessing.cover]
+# 是否启用封面图自动处理（如裁剪、压缩等）
 enabled = true
 
+# 图片处理配置（内容中的图片）
 [imageProcessing.content]
+# 是否启用文章内容中图片的自动处理
 enabled = true
 
-## Comments
+## 评论系统配置
 [comments]
+# 是否启用评论功能
 enabled = true
+# 评论系统提供商（支持 disqus、utterances、giscus 等）
 provider = "disqus"
 
+# DisqusJS 评论配置（基于 Disqus 的前端实现）
 [comments.disqusjs]
 shortname = ""
 apiUrl = ""
@@ -86,65 +137,74 @@ apiKey = ""
 admin = ""
 adminLabel = ""
 
+# Utterances 评论配置（基于 GitHub Issues）
 [comments.utterances]
-repo = ""
-issueTerm = "pathname"
-label = ""
+repo = ""  # 仓库地址（如 "username/repo"）
+issueTerm = "pathname"  # 评论与 Issues 的关联方式
+label = ""  # 自动添加的标签
 
+# Remark42 评论配置
 [comments.remark42]
-host = ""
-site = ""
-locale = ""
+host = ""  # Remark42 服务地址
+site = ""  # 站点标识
+locale = ""  # 语言
 
+# Vssue 评论配置（基于 GitHub/GitLab 等 Issues）
 [comments.vssue]
-platform = ""
-owner = ""
-repo = ""
-clientId = ""
-clientSecret = ""
-autoCreateIssue = false
+platform = ""  # 平台（github、gitlab 等）
+owner = ""  # 仓库所有者
+repo = ""  # 仓库名称
+clientId = ""  # OAuth 应用 Client ID
+clientSecret = ""  # OAuth 应用 Client Secret
+autoCreateIssue = false  # 是否自动创建评论对应的 Issue
 
+# Waline 评论配置
 [comments.waline]
-serverURL = ""
-lang = ""
-visitor = ""
-avatar = ""
-emoji = ["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"]
-requiredMeta = ["name", "email", "url"]
-placeholder = ""
+serverURL = ""  # Waline 服务端地址
+lang = ""  # 语言
+visitor = ""  # 是否启用访问量统计
+avatar = ""  # 头像风格
+emoji = ["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"]  # 表情包地址
+requiredMeta = ["name", "email", "url"]  # 必填的评论者信息
+placeholder = ""  # 评论框提示文字
 
 [comments.waline.locale]
-admin = "Admin"
+admin = "Admin"  # 管理员显示名称
 
+# Twikoo 评论配置（基于腾讯云开发）
 [comments.twikoo]
-envId = ""
-region = ""
-path = ""
-lang = ""
+envId = ""  # 环境 ID
+region = ""  # 地域
+path = ""  # 评论关联路径
+lang = ""  # 语言
 
+# Cactus 评论配置（基于 Matrix 协议）
 [comments.cactus]
 defaultHomeserverUrl = "https://matrix.cactus.chat:8448"
 serverName = "cactus.chat"
-siteName = ""
+siteName = ""  # 站点名称
 
+# Giscus 评论配置（基于 GitHub Discussions）
 [comments.giscus]
-repo = ""
-repoID = ""
-category = ""
-categoryID = ""
-mapping = ""
-lightTheme = ""
-darkTheme = ""
-reactionsEnabled = 1
-emitMetadata = 0
+repo = ""  # 仓库地址
+repoID = ""  # 仓库 ID
+category = ""  # 讨论分类
+categoryID = ""  # 分类 ID
+mapping = ""  # 评论与讨论的关联方式
+lightTheme = ""  # 浅色主题
+darkTheme = ""  # 深色主题
+reactionsEnabled = 1  # 是否启用表情反应
+emitMetadata = 0  # 是否发送元数据
 
+# Gitalk 评论配置（基于 GitHub Issues）
 [comments.gitalk]
-owner = ""
-admin = ""
-repo = ""
-clientID = ""
-clientSecret = ""
+owner = ""  # 仓库所有者
+admin = ""  # 管理员列表
+repo = ""  # 仓库名称
+clientID = ""  # OAuth 应用 Client ID
+clientSecret = ""  # OAuth 应用 Client Secret
 
+# Cusdis 评论配置
 [comments.cusdis]
-host = ""
-id = ""
+host = ""  # Cusdis 服务地址
+id = ""  # 站点 ID
