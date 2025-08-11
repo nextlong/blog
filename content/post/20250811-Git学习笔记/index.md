@@ -1,8 +1,8 @@
 ---
-title: Git 虚席笔记
-slug: hugo-github-pages
+title: Git 学习笔记
+slug: git
 date: 2025-08-11 22:00:00+0800
-image: 1754729486659-27925415-4161-47ae-9511-97bfed804844.png
+
 categories:
     - 扩展知识
 tags:
