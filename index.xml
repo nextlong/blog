@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Starry night</title><link>https://dev.soarfine.com/</link><description>Recent content on Starry night</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Mon, 11 Aug 2025 22:00:00 +0800</lastBuildDate><atom:link href="https://dev.soarfine.com/index.xml" rel="self" type="application/rss+xml"/><item><title>Git 学习笔记</title><link>https://dev.soarfine.com/p/git/</link><pubDate>Mon, 11 Aug 2025 22:00:00 +0800</pubDate><guid>https://dev.soarfine.com/p/git/</guid><description>&lt;img src="https://dev.soarfine.com/p/git/1.png" alt="Featured image of post Git 学习笔记" />&lt;h3 id="什么是-git">什么是 Git？
+&lt;/h3>&lt;p>Git 是一个分布式版本控制系统，用于跟踪文件的修改历史，方便多人协作开发和管理项目。&lt;/p>
+&lt;p>与传统的集中式版本控制系统不同，Git的每个工作目录都是一个完整的代码仓库，具有完整的历史记录和版本跟踪能力。&lt;/p>
+&lt;h3 id="为什么要使用-git">为什么要使用 Git？
+&lt;/h3>&lt;h4 id="版本控制">版本控制：
+&lt;/h4>&lt;p>可以回溯到任意历史版本&lt;/p>
+&lt;h4 id="团队协作">团队协作：
+&lt;/h4>&lt;p>多人可以同时工作在同一个项目上&lt;/p>
+&lt;h4 id="分支管理">分支管理：
+&lt;/h4>&lt;p>轻松创建、合并分支，实现不同功能并行开发&lt;/p>
+&lt;h4 id="备份保障">备份保障：
+&lt;/h4>&lt;p>每个开发者都有完整的项目历史&lt;/p>
+&lt;h3 id="git-基本概念">Git 基本概念
+&lt;/h3>&lt;h4 id="四个区域">四个区域
+&lt;/h4>&lt;h5 id="工作区">工作区：
+&lt;/h5>&lt;p>用户直接编辑文件的目录，即本地项目文件夹（可见的代码文件）。&lt;/p>
+&lt;h5 id="暂存区">暂存区：
+&lt;/h5>&lt;p>临时存放工作区改动的中间区域，是提交前的缓冲地带。&lt;/p>
+&lt;h5 id="本地仓库">本地仓库：
+&lt;/h5>&lt;p>存储项目完整历史记录的数据库（位于 .git 目录中）。&lt;/p>
+&lt;h5 id="远程仓库">远程仓库：
+&lt;/h5>&lt;p>托管在服务器上的仓库（如 GitHub、GitLab）。&lt;/p>
+&lt;p>&lt;img src="https://dev.soarfine.com/p/git/1.png"
+width="1889"
+height="1084"
+srcset="https://dev.soarfine.com/p/git/1_hu_ff8a9494ec1b8597.png 480w, https://dev.soarfine.com/p/git/1_hu_9cd6fbf11dc48fb.png 1024w"
+loading="lazy"
+alt="img"
+class="gallery-image"
+data-flex-grow="174"
+data-flex-basis="418px"
+>&lt;/p>
+&lt;h4 id="文件状态">文件状态：
+&lt;/h4>&lt;h5 id="已修改">已修改：
+&lt;/h5>&lt;p>修改了但是没有保存到暂存区的文件。&lt;/p>
+&lt;h5 id="已暂存">已暂存：
+&lt;/h5>&lt;p>修改后已经保存到暂存区的文件。&lt;/p>
+&lt;h5 id="已提交">已提交：
+&lt;/h5>&lt;p>把暂存区的文件提交到本地仓库后的状态。&lt;/p>
+&lt;h4 id="git-config-global-credentialhelper-store-与-ssh-秘钥">git config &amp;ndash;global credential.helper store 与 SSH 秘钥
+&lt;/h4>&lt;h5 id="credentialhelper-store">credential.helper store
+&lt;/h5>&lt;p>用于 HTTPS 协议的 Git 操作&lt;/p>
+&lt;p>将你的 HTTPS 凭据（用户名和密码）以明文形式存储在 ~/.git-credentials 文件中&lt;/p>
+&lt;p>下次访问 HTTPS 仓库时自动使用这些凭据&lt;/p>
+&lt;p>安全性较低，因为密码是明文存储的&lt;/p>
+&lt;h5 id="ssh-密钥">SSH 密钥
+&lt;/h5>&lt;p>用于 SSH 协议的 Git 操作&lt;/p>
+&lt;p>使用非对称加密技术（公钥/私钥对）&lt;/p>
+&lt;p>公钥上传到 Git 服务器（如 GitHub），私钥保留在本地&lt;/p>
+&lt;p>每次连接时通过加密握手验证身份&lt;/p>
+&lt;p>比 HTTPS 更安全，推荐用于专业开发环境&lt;/p>
+&lt;h5 id="主要区别">主要区别：
+&lt;/h5>&lt;p>协议不同：一个用于 HTTPS，一个用于 SSH&lt;/p>
+&lt;p>安全级别：SSH 更安全，credential.helper store 是明文存储&lt;/p>
+&lt;p>使用场景：SSH 需要密钥对设置，适合开发者；credential.helper 适合简单场景&lt;/p>
+&lt;p>存储内容：SSH 存储加密密钥，credential.helper 存储明文密码&lt;/p>
+&lt;h3 id="git-的使用">Git 的使用
+&lt;/h3>&lt;h4 id="初始化设置">初始化设置
+&lt;/h4>&lt;h5 id="配置用户名">配置用户名：
+&lt;/h5>&lt;p>git config &amp;ndash;global user.name &amp;ldquo;Name&amp;rdquo;&lt;/p>
+&lt;h5 id="配置邮箱">配置邮箱：
+&lt;/h5>&lt;p>git config &amp;ndash;global user.email &amp;ldquo;mail&amp;rdquo;&lt;/p>
+&lt;h5 id="存储配置">存储配置：
+&lt;/h5>&lt;p>git config &amp;ndash;global credential.helper store&lt;/p>
+&lt;h4 id="仓库初始化与克隆">&lt;strong>仓库初始化与克隆&lt;/strong>
+&lt;/h4>&lt;h5 id="创建目录并进入">创建目录并进入：
+&lt;/h5>&lt;p>mkdir learn-git&lt;/p>
+&lt;p>cd learn-git&lt;/p>
+&lt;h5 id="初始化本地仓库">初始化本地仓库：
+&lt;/h5>&lt;p>git init&lt;/p>
+&lt;h5 id="克隆远程仓库">克隆远程仓库：
+&lt;/h5>&lt;p>git clone &amp;lt;仓库地址&amp;gt;&lt;/p>
+&lt;h4 id="文件操作">文件操作
+&lt;/h4>&lt;h5 id="创建文件并写入内容">创建文件并写入内容：
+&lt;/h5>&lt;p>echo &amp;ldquo;内容&amp;rdquo; &amp;gt; 文件名.txt&lt;/p>
+&lt;h5 id="查看文件内容">查看文件内容：
+&lt;/h5>&lt;p>cat 文件名.txt&lt;/p>
+&lt;h5 id="列出目录文件含隐藏文件">列出目录文件（含隐藏文件）：
+&lt;/h5>&lt;p>ls -al&lt;/p>
+&lt;h5 id="删除本地文件">删除本地文件：
+&lt;/h5>&lt;p>rm 文件名&lt;/p>
+&lt;h4 id="暂存与提交">暂存与提交
+&lt;/h4>&lt;h5 id="添加文件到暂存区">添加文件到暂存区：
+&lt;/h5>&lt;p>git add 文件名（单个文件）&lt;/p>
+&lt;p>git add *.txt（所有 .txt 文件）&lt;/p>
+&lt;p>git add .（当前目录所有文件）&lt;/p>
+&lt;h5 id="查看暂存区文件">查看暂存区文件：
+&lt;/h5>&lt;p>git ls-files&lt;/p>
+&lt;h5 id="提交更改">提交更改：
+&lt;/h5>&lt;p>git commit -m &amp;ldquo;提交说明&amp;rdquo;&lt;/p>
+&lt;h5 id="从暂存区移除文件保留工作区文件">从暂存区移除文件（保留工作区文件）
+&lt;/h5>&lt;p>git rm &amp;ndash;cached 文件名&lt;/p>
+&lt;h5 id="彻底删除文件工作区--暂存区">彻底删除文件（工作区 + 暂存区）：
+&lt;/h5>&lt;p>git rm 文件名&lt;/p>
+&lt;p>git rm -r *（递归删除所有文件及子目录）&lt;/p>
+&lt;h4 id="ssh配置">SSH配置
+&lt;/h4>&lt;h5 id="生成ssh秘钥">生成SSH秘钥
+&lt;/h5>&lt;p>ssh-keygen -t rsa -b 4096&lt;/p>
+&lt;h4 id="状态与日志">状态与日志
+&lt;/h4>&lt;h5 id="查看仓库状态">查看仓库状态
+&lt;/h5>&lt;p>git status&lt;/p>
+&lt;h5 id="查看提交记录">查看提交记录
+&lt;/h5>&lt;p>git log（完整记录）&lt;/p>
+&lt;p>git log &amp;ndash;oneline（简洁记录）&lt;/p>
+&lt;h4 id="版本回退与比较">版本回退与比较
+&lt;/h4>&lt;h5 id="回退版本">回退版本
+&lt;/h5>&lt;p>git reset &amp;ndash;soft（保留工作区和暂存区修改）&lt;/p>
+&lt;p>git reset &amp;ndash;mixed（保留工作区修改，默认方式）&lt;/p>
+&lt;p>git reset &amp;ndash;hard（彻底回退，丢弃所有修改）&lt;/p>
+&lt;h4 id="比较文件差异">比较文件差异
+&lt;/h4>&lt;h5 id="工作区暂存区">工作区、暂存区
+&lt;/h5>&lt;p>git diff&lt;/p>
+&lt;h5 id="工作区最新提交">工作区、最新提交
+&lt;/h5>&lt;p>git diff HEAD&lt;/p>
+&lt;h5 id="暂存区最新提交">暂存区、最新提交
+&lt;/h5>&lt;p>git diff &amp;ndash;cached&lt;/p>
+&lt;h5 id="比较两个版本">比较两个版本
+&lt;/h5>&lt;p>git diff 版本号1 版本号2&lt;/p>
+&lt;h5 id="当前版本上一版本">当前版本、上一版本
+&lt;/h5>&lt;p>git diff HEAD~ HEAD&lt;/p>
+&lt;h5 id="当前版本前第-n-个版本">当前版本、前第 N 个版本
+&lt;/h5>&lt;p>git diff HEAD~N HEAD&lt;/p></description></item><item><title>基于Hugo+Github Page快速搭建个人博客</title><link>https://dev.soarfine.com/p/hugo-github-pages/</link><pubDate>Sun, 10 Aug 2025 11:00:00 +0800</pubDate><guid>https://dev.soarfine.com/p/hugo-github-pages/</guid><description>&lt;img src="https://dev.soarfine.com/p/hugo-github-pages/1754729486659-27925415-4161-47ae-9511-97bfed804844.png" alt="Featured image of post 基于Hugo+Github Page快速搭建个人博客" />&lt;h2 id="搭建思路">搭建思路
+&lt;/h2>&lt;h3 id="什么是-github-pages">什么是 GitHub Pages？
+&lt;/h3>&lt;p>GitHub Pages 是 GitHub 提供的一项静态网站托管服务，允许用户直接从 GitHub 仓库中托管和发布静态网页（如 HTML、CSS、JavaScript 等文件），且完全免费，非常适合用于搭建个人博客、项目文档、作品集等。&lt;/p>
+&lt;h3 id="什么是-hugo">什么是 Hugo？
+&lt;/h3>&lt;p>Hugo 是一个快速、现代的静态网站生成器，用 Go 语言开发，专注于性能和易用性。它能将 Markdown、HTML 等源文件转换为可直接部署的静态 HTML 网站，非常适合构建博客、文档、个人主页、项目网站等。&lt;/p>
+&lt;h3 id="什么是-github-action">什么是 GitHub Action？
+&lt;/h3>&lt;p>GitHub Actions 是 GitHub 提供的持续 CI/CD（持续集成 / 持续部署）工具，它允许你在 GitHub 仓库中自动化各种软件开发流程，比如代码测试、构建、部署、Issue 处理等。简单来说，你可以通过编写配置文件，让 GitHub 在特定事件（如代码推送、PR 提交等）发生时自动执行一系列预定操作。&lt;/p>
+&lt;h3 id="hugo-theme-stack-starterhugostack-主题博客快速部署项目">hugo-theme-stack-starter：Hugo+Stack 主题博客快速部署项目
+&lt;/h3>&lt;p>基于 Hugo 的静态网站生成功能，开发者创建了众多风格各异的主题模板。其中，Stack 主题因其精美的页面设计和丰富的功能特性而备受关注。&lt;/p>
+&lt;p>为了进一步简化开发流程，Stack 作者 Jimmy 开源了一个集成 Hugo+ Stack 主题快速部署博客的项目 hugo-theme-stack-starter。此外，该模板还集成了 GitHub Action，能够在本地完成内容编辑后，自动触发 GitHub Action，完成静态网站构建、部署流程，确保发布过程的自动化与高效性。&lt;/p>
+&lt;p>我们只需要 fork hugo-theme-stack-starter 项目，完成基础配置后即可完成博客搭建。&lt;/p>
+&lt;h2 id="博客工作流程">博客工作流程
+&lt;/h2>&lt;p>&lt;img src="https://dev.soarfine.com/p/hugo-github-pages/1754729486659-27925415-4161-47ae-9511-97bfed804844.png"
+width="1694"
+height="812"
+srcset="https://dev.soarfine.com/p/hugo-github-pages/1754729486659-27925415-4161-47ae-9511-97bfed804844_hu_52bd7ef63b03f8fc.png 480w, https://dev.soarfine.com/p/hugo-github-pages/1754729486659-27925415-4161-47ae-9511-97bfed804844_hu_ebae8794047ba27e.png 1024w"
+loading="lazy"
+alt="img"
+class="gallery-image"
+data-flex-grow="208"
+data-flex-basis="500px"
+>&lt;/p>
+&lt;h2 id="搭建步骤">搭建步骤
+&lt;/h2>&lt;h3 id="fork-hugo-theme-stack-starter-代码仓库">Fork &lt;a class="link" href="https://github.com/CaiJimmy/hugo-theme-stack-starter" target="_blank" rel="noopener"
+>hugo-theme-stack-starter&lt;/a> 代码仓库
+&lt;/h3>&lt;p>Fork 到个人账户下的代码仓库如果没有域名的话可以使用 GitHub 提供的域名，不过需要 Fork 后的仓库名位 ${github_username}.github.io，后续可以直接通过 ${github_username}.github.io 域名来直接访问个人博客。&lt;/p>
+&lt;p>这里我准备使用个人域名，所以仓库名可以任意定义。&lt;/p>
+&lt;p>&lt;img src="https://dev.soarfine.com/p/hugo-github-pages/1754727084126-28a46512-ddf1-4d93-a9c6-d1d2aed01701.png"
+width="1152"
+height="786"
+srcset="https://dev.soarfine.com/p/hugo-github-pages/1754727084126-28a46512-ddf1-4d93-a9c6-d1d2aed01701_hu_79d198a2e797c386.png 480w, https://dev.soarfine.com/p/hugo-github-pages/1754727084126-28a46512-ddf1-4d93-a9c6-d1d2aed01701_hu_37952f745962100a.png 1024w"
+loading="lazy"
+alt="img"
+class="gallery-image"
+data-flex-grow="146"
+data-flex-basis="351px"
+>&lt;/p>
+&lt;h3 id="触发博客部署的-github-action-工作流">触发博客部署的 GitHub Action 工作流
+&lt;/h3>&lt;p>我们使用的这个快速博客部署项目在我们代码提交到你GitHub 仓库后会自动,触发 GitHub 工作流，Master 分支中的文件会被编译为静态网页，然后发布到 gh-pages 分支上。&lt;/p>
+&lt;p>首次 Frok 之后的代码仓可能并没有触发 GitHub Action ，我们可以通过手动触发来完成首次的静态网页编译与发布。&lt;/p>
+&lt;p>直接修改 Master 分支下 .github/workflows 目录下的 deploy.yml 文件，在原有的代码更新触发 GitHub Action 之外，增加一种手动触发工作流的方式。&lt;/p>
+&lt;p>&lt;img src="https://dev.soarfine.com/p/hugo-github-pages/1754733233493-e0dbab9e-c49e-4c7e-8764-83a95aaf72e9.png"
+width="1250"
+height="266"
+srcset="https://dev.soarfine.com/p/hugo-github-pages/1754733233493-e0dbab9e-c49e-4c7e-8764-83a95aaf72e9_hu_777792f8c9e4679f.png 480w, https://dev.soarfine.com/p/hugo-github-pages/1754733233493-e0dbab9e-c49e-4c7e-8764-83a95aaf72e9_hu_2ac5876340b739da.png 1024w"
+loading="lazy"
+alt="img"
+class="gallery-image"
+data-flex-grow="469"
+data-flex-basis="1127px"
+>&lt;/p>
+&lt;p>后续我们就可以通过 Actions 模块来手动完成工作流的触发。&lt;/p>
+&lt;p>&lt;img src="https://dev.soarfine.com/p/hugo-github-pages/1754733749108-574468d5-d620-46bb-856a-16439b293e45.png"
+width="2549"
+height="1364"
+srcset="https://dev.soarfine.com/p/hugo-github-pages/1754733749108-574468d5-d620-46bb-856a-16439b293e45_hu_5d6f5fa14fb6cd7a.png 480w, https://dev.soarfine.com/p/hugo-github-pages/1754733749108-574468d5-d620-46bb-856a-16439b293e45_hu_e2c37998aae27d2c.png 1024w"
+loading="lazy"
+alt="img"
+class="gallery-image"
+data-flex-grow="186"
+data-flex-basis="448px"
+>&lt;/p>
+&lt;h3 id="域名解析指向-github">域名解析指向 GitHub
+&lt;/h3>&lt;p>&lt;img src="https://dev.soarfine.com/p/hugo-github-pages/1754733903141-d5c847c6-fc0e-43f4-a77c-6ca42baa4521.png"
+width="1098"
+height="82"
+srcset="https://dev.soarfine.com/p/hugo-github-pages/1754733903141-d5c847c6-fc0e-43f4-a77c-6ca42baa4521_hu_fe88498f8a41e7f6.png 480w, https://dev.soarfine.com/p/hugo-github-pages/1754733903141-d5c847c6-fc0e-43f4-a77c-6ca42baa4521_hu_2588bf181e8d3e13.png 1024w"
+loading="lazy"
+alt="img"
+class="gallery-image"
+data-flex-grow="1339"
+data-flex-basis="3213px"
+>&lt;/p>
+&lt;h3 id="完成-github-pages-的配置及域名绑定">完成 GitHub Pages 的配置及域名绑定
+&lt;/h3>&lt;p>点击 Seetings，进入 Secrets and variable 一栏，选择 Pages 栏目，选择部署分支为 gh-pages，即可指向 GitHub Pages 到我们的静态页面分支。&lt;/p>
+&lt;p>接下来在 Custom domain 中完成已解析域名的绑定。&lt;/p>
+&lt;p>&lt;img src="https://dev.soarfine.com/p/hugo-github-pages/1754734147208-1f0232bb-339c-41ad-9183-0b9cf755e970.png"
+width="2554"
+height="1367"
+srcset="https://dev.soarfine.com/p/hugo-github-pages/1754734147208-1f0232bb-339c-41ad-9183-0b9cf755e970_hu_b0a3c4c66055fa0a.png 480w, https://dev.soarfine.com/p/hugo-github-pages/1754734147208-1f0232bb-339c-41ad-9183-0b9cf755e970_hu_76311482a07ebbe.png 1024w"
+loading="lazy"
+alt="img"
+class="gallery-image"
+data-flex-grow="186"
+data-flex-basis="448px"
+>&lt;/p>
+&lt;p>如下图所示，完成域名绑定后，目标分支下会生成个 CNAME 文件，如果我们点开看的话，文件内容只有一行，内容为我们刚才绑定的域名。&lt;/p>
+&lt;p>&lt;img src="https://dev.soarfine.com/p/hugo-github-pages/1754739417933-325bb8c0-4591-4c0f-b07f-40ee4dc832ac.png"
+width="1383"
+height="1174"
+srcset="https://dev.soarfine.com/p/hugo-github-pages/1754739417933-325bb8c0-4591-4c0f-b07f-40ee4dc832ac_hu_6803df96bfe1e011.png 480w, https://dev.soarfine.com/p/hugo-github-pages/1754739417933-325bb8c0-4591-4c0f-b07f-40ee4dc832ac_hu_7d08c560559718f4.png 1024w"
+loading="lazy"
+alt="img"
+class="gallery-image"
+data-flex-grow="117"
+data-flex-basis="282px"
+>&lt;/p>
+&lt;h3 id="直接通过域名即可成功访问博客">直接通过域名即可成功访问博客
+&lt;/h3>&lt;p>后续完成个性化配置就可以正常通过博客发布文章了，如下图所示 Stack 主题给我们提供了一些 Demo 文章案例，我们可以在编辑文章时进行参考。当然也可以直接参考 Hugo 官网文档说明来完成一些配置。&lt;/p>
+&lt;p>&lt;img src="https://dev.soarfine.com/p/hugo-github-pages/1754734415048-2d06797c-b085-4a23-838b-80ab6b3732b2.png"
+width="2549"
+height="1367"
+srcset="https://dev.soarfine.com/p/hugo-github-pages/1754734415048-2d06797c-b085-4a23-838b-80ab6b3732b2_hu_c3535f951e95d7a5.png 480w, https://dev.soarfine.com/p/hugo-github-pages/1754734415048-2d06797c-b085-4a23-838b-80ab6b3732b2_hu_f33a2579dabdc5e.png 1024w"
+loading="lazy"
+alt="img"
+class="gallery-image"
+data-flex-grow="186"
+data-flex-basis="447px"
+>&lt;/p></description></item><item><title>文章归档</title><link>https://dev.soarfine.com/archives/</link><pubDate>Sun, 06 Mar 2022 00:00:00 +0000</pubDate><guid>https://dev.soarfine.com/archives/</guid><description/></item><item><title>检索文章</title><link>https://dev.soarfine.com/search/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://dev.soarfine.com/search/</guid><description/></item><item><title>友情连接</title><link>https://dev.soarfine.com/%E5%8F%8B%E6%83%85%E8%BF%9E%E6%8E%A5/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://dev.soarfine.com/%E5%8F%8B%E6%83%85%E8%BF%9E%E6%8E%A5/</guid><description>&lt;!-- To use this feature, add `links` section to frontmatter.
+This page's frontmatter:
+```yaml
+links:
+- title: GitHub
+description: GitHub is the world's largest software development platform.
+website: https://github.com
+image: https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png
+- title: TypeScript
+description: TypeScript is a typed superset of JavaScript that compiles to plain JavaScript.
+website: https://www.typescriptlang.org
+image: ts-logo-128.jpg
+```
+`image` field accepts both local and external images. --></description></item></channel></rss>

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Git on Starry night</title><link>https://dev.soarfine.com/tags/git/</link><description>Recent content in Git on Starry night</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Mon, 11 Aug 2025 22:00:00 +0800</lastBuildDate><atom:link href="https://dev.soarfine.com/tags/git/index.xml" rel="self" type="application/rss+xml"/><item><title>Git 学习笔记</title><link>https://dev.soarfine.com/p/git/</link><pubDate>Mon, 11 Aug 2025 22:00:00 +0800</pubDate><guid>https://dev.soarfine.com/p/git/</guid><description>&lt;img src="https://dev.soarfine.com/p/git/1.png" alt="Featured image of post Git 学习笔记" />&lt;h3 id="什么是-git">什么是 Git？
+&lt;/h3>&lt;p>Git 是一个分布式版本控制系统，用于跟踪文件的修改历史，方便多人协作开发和管理项目。&lt;/p>
+&lt;p>与传统的集中式版本控制系统不同，Git的每个工作目录都是一个完整的代码仓库，具有完整的历史记录和版本跟踪能力。&lt;/p>
+&lt;h3 id="为什么要使用-git">为什么要使用 Git？
+&lt;/h3>&lt;h4 id="版本控制">版本控制：
+&lt;/h4>&lt;p>可以回溯到任意历史版本&lt;/p>
+&lt;h4 id="团队协作">团队协作：
+&lt;/h4>&lt;p>多人可以同时工作在同一个项目上&lt;/p>
+&lt;h4 id="分支管理">分支管理：
+&lt;/h4>&lt;p>轻松创建、合并分支，实现不同功能并行开发&lt;/p>
+&lt;h4 id="备份保障">备份保障：
+&lt;/h4>&lt;p>每个开发者都有完整的项目历史&lt;/p>
+&lt;h3 id="git-基本概念">Git 基本概念
+&lt;/h3>&lt;h4 id="四个区域">四个区域
+&lt;/h4>&lt;h5 id="工作区">工作区：
+&lt;/h5>&lt;p>用户直接编辑文件的目录，即本地项目文件夹（可见的代码文件）。&lt;/p>
+&lt;h5 id="暂存区">暂存区：
+&lt;/h5>&lt;p>临时存放工作区改动的中间区域，是提交前的缓冲地带。&lt;/p>
+&lt;h5 id="本地仓库">本地仓库：
+&lt;/h5>&lt;p>存储项目完整历史记录的数据库（位于 .git 目录中）。&lt;/p>
+&lt;h5 id="远程仓库">远程仓库：
+&lt;/h5>&lt;p>托管在服务器上的仓库（如 GitHub、GitLab）。&lt;/p>
+&lt;p>&lt;img src="https://dev.soarfine.com/p/git/1.png"
+width="1889"
+height="1084"
+srcset="https://dev.soarfine.com/p/git/1_hu_ff8a9494ec1b8597.png 480w, https://dev.soarfine.com/p/git/1_hu_9cd6fbf11dc48fb.png 1024w"
+loading="lazy"
+alt="img"
+class="gallery-image"
+data-flex-grow="174"
+data-flex-basis="418px"
+>&lt;/p>
+&lt;h4 id="文件状态">文件状态：
+&lt;/h4>&lt;h5 id="已修改">已修改：
+&lt;/h5>&lt;p>修改了但是没有保存到暂存区的文件。&lt;/p>
+&lt;h5 id="已暂存">已暂存：
+&lt;/h5>&lt;p>修改后已经保存到暂存区的文件。&lt;/p>
+&lt;h5 id="已提交">已提交：
+&lt;/h5>&lt;p>把暂存区的文件提交到本地仓库后的状态。&lt;/p>
+&lt;h4 id="git-config-global-credentialhelper-store-与-ssh-秘钥">git config &amp;ndash;global credential.helper store 与 SSH 秘钥
+&lt;/h4>&lt;h5 id="credentialhelper-store">credential.helper store
+&lt;/h5>&lt;p>用于 HTTPS 协议的 Git 操作&lt;/p>
+&lt;p>将你的 HTTPS 凭据（用户名和密码）以明文形式存储在 ~/.git-credentials 文件中&lt;/p>
+&lt;p>下次访问 HTTPS 仓库时自动使用这些凭据&lt;/p>
+&lt;p>安全性较低，因为密码是明文存储的&lt;/p>
+&lt;h5 id="ssh-密钥">SSH 密钥
+&lt;/h5>&lt;p>用于 SSH 协议的 Git 操作&lt;/p>
+&lt;p>使用非对称加密技术（公钥/私钥对）&lt;/p>
+&lt;p>公钥上传到 Git 服务器（如 GitHub），私钥保留在本地&lt;/p>
+&lt;p>每次连接时通过加密握手验证身份&lt;/p>
+&lt;p>比 HTTPS 更安全，推荐用于专业开发环境&lt;/p>
+&lt;h5 id="主要区别">主要区别：
+&lt;/h5>&lt;p>协议不同：一个用于 HTTPS，一个用于 SSH&lt;/p>
+&lt;p>安全级别：SSH 更安全，credential.helper store 是明文存储&lt;/p>
+&lt;p>使用场景：SSH 需要密钥对设置，适合开发者；credential.helper 适合简单场景&lt;/p>
+&lt;p>存储内容：SSH 存储加密密钥，credential.helper 存储明文密码&lt;/p>
+&lt;h3 id="git-的使用">Git 的使用
+&lt;/h3>&lt;h4 id="初始化设置">初始化设置
+&lt;/h4>&lt;h5 id="配置用户名">配置用户名：
+&lt;/h5>&lt;p>git config &amp;ndash;global user.name &amp;ldquo;Name&amp;rdquo;&lt;/p>
+&lt;h5 id="配置邮箱">配置邮箱：
+&lt;/h5>&lt;p>git config &amp;ndash;global user.email &amp;ldquo;mail&amp;rdquo;&lt;/p>
+&lt;h5 id="存储配置">存储配置：
+&lt;/h5>&lt;p>git config &amp;ndash;global credential.helper store&lt;/p>
+&lt;h4 id="仓库初始化与克隆">&lt;strong>仓库初始化与克隆&lt;/strong>
+&lt;/h4>&lt;h5 id="创建目录并进入">创建目录并进入：
+&lt;/h5>&lt;p>mkdir learn-git&lt;/p>
+&lt;p>cd learn-git&lt;/p>
+&lt;h5 id="初始化本地仓库">初始化本地仓库：
+&lt;/h5>&lt;p>git init&lt;/p>
+&lt;h5 id="克隆远程仓库">克隆远程仓库：
+&lt;/h5>&lt;p>git clone &amp;lt;仓库地址&amp;gt;&lt;/p>
+&lt;h4 id="文件操作">文件操作
+&lt;/h4>&lt;h5 id="创建文件并写入内容">创建文件并写入内容：
+&lt;/h5>&lt;p>echo &amp;ldquo;内容&amp;rdquo; &amp;gt; 文件名.txt&lt;/p>
+&lt;h5 id="查看文件内容">查看文件内容：
+&lt;/h5>&lt;p>cat 文件名.txt&lt;/p>
+&lt;h5 id="列出目录文件含隐藏文件">列出目录文件（含隐藏文件）：
+&lt;/h5>&lt;p>ls -al&lt;/p>
+&lt;h5 id="删除本地文件">删除本地文件：
+&lt;/h5>&lt;p>rm 文件名&lt;/p>
+&lt;h4 id="暂存与提交">暂存与提交
+&lt;/h4>&lt;h5 id="添加文件到暂存区">添加文件到暂存区：
+&lt;/h5>&lt;p>git add 文件名（单个文件）&lt;/p>
+&lt;p>git add *.txt（所有 .txt 文件）&lt;/p>
+&lt;p>git add .（当前目录所有文件）&lt;/p>
+&lt;h5 id="查看暂存区文件">查看暂存区文件：
+&lt;/h5>&lt;p>git ls-files&lt;/p>
+&lt;h5 id="提交更改">提交更改：
+&lt;/h5>&lt;p>git commit -m &amp;ldquo;提交说明&amp;rdquo;&lt;/p>
+&lt;h5 id="从暂存区移除文件保留工作区文件">从暂存区移除文件（保留工作区文件）
+&lt;/h5>&lt;p>git rm &amp;ndash;cached 文件名&lt;/p>
+&lt;h5 id="彻底删除文件工作区--暂存区">彻底删除文件（工作区 + 暂存区）：
+&lt;/h5>&lt;p>git rm 文件名&lt;/p>
+&lt;p>git rm -r *（递归删除所有文件及子目录）&lt;/p>
+&lt;h4 id="ssh配置">SSH配置
+&lt;/h4>&lt;h5 id="生成ssh秘钥">生成SSH秘钥
+&lt;/h5>&lt;p>ssh-keygen -t rsa -b 4096&lt;/p>
+&lt;h4 id="状态与日志">状态与日志
+&lt;/h4>&lt;h5 id="查看仓库状态">查看仓库状态
+&lt;/h5>&lt;p>git status&lt;/p>
+&lt;h5 id="查看提交记录">查看提交记录
+&lt;/h5>&lt;p>git log（完整记录）&lt;/p>
+&lt;p>git log &amp;ndash;oneline（简洁记录）&lt;/p>
+&lt;h4 id="版本回退与比较">版本回退与比较
+&lt;/h4>&lt;h5 id="回退版本">回退版本
+&lt;/h5>&lt;p>git reset &amp;ndash;soft（保留工作区和暂存区修改）&lt;/p>
+&lt;p>git reset &amp;ndash;mixed（保留工作区修改，默认方式）&lt;/p>
+&lt;p>git reset &amp;ndash;hard（彻底回退，丢弃所有修改）&lt;/p>
+&lt;h4 id="比较文件差异">比较文件差异
+&lt;/h4>&lt;h5 id="工作区暂存区">工作区、暂存区
+&lt;/h5>&lt;p>git diff&lt;/p>
+&lt;h5 id="工作区最新提交">工作区、最新提交
+&lt;/h5>&lt;p>git diff HEAD&lt;/p>
+&lt;h5 id="暂存区最新提交">暂存区、最新提交
+&lt;/h5>&lt;p>git diff &amp;ndash;cached&lt;/p>
+&lt;h5 id="比较两个版本">比较两个版本
+&lt;/h5>&lt;p>git diff 版本号1 版本号2&lt;/p>
+&lt;h5 id="当前版本上一版本">当前版本、上一版本
+&lt;/h5>&lt;p>git diff HEAD~ HEAD&lt;/p>
+&lt;h5 id="当前版本前第-n-个版本">当前版本、前第 N 个版本
+&lt;/h5>&lt;p>git diff HEAD~N HEAD&lt;/p></description></item></channel></rss>
