@@ -199,8 +199,8 @@ git diff HEAD~ HEAD
 
 git diff HEAD~N HEAD
 
-####SSH配置
+#### SSH配置
 
-#####生成SSH秘钥
+##### 生成SSH秘钥
 
 ssh-keygen -t rsa -b 4096
