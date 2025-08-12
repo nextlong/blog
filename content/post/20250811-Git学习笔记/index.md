@@ -1,13 +1,13 @@
 ---
 title: Git 学习笔记
-slug: git
-date: 2025-08-11 22:00:00+0800
-
+description: Git 学习笔记
+slug: Git
+date: 2025-08-11 22:00:00+8000
 categories:
     - 扩展知识
 tags:
     - Git
-weight: 1
+weight: 1 
 ---
 
 ### 什么是 Git？
