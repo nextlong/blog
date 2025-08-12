@@ -71,6 +71,40 @@ Git 是一个分布式版本控制系统，用于跟踪文件的修改历史，�
 
 把暂存区的文件提交到本地仓库后的状态。
 
+#### git config --global credential.helper store 与 SSH 秘钥
+
+##### credential.helper store
+
+用于 HTTPS 协议的 Git 操作
+
+将你的 HTTPS 凭据（用户名和密码）以明文形式存储在 ~/.git-credentials 文件中
+
+下次访问 HTTPS 仓库时自动使用这些凭据
+
+安全性较低，因为密码是明文存储的
+
+##### SSH 密钥
+
+用于 SSH 协议的 Git 操作
+
+使用非对称加密技术（公钥/私钥对）
+
+公钥上传到 Git 服务器（如 GitHub），私钥保留在本地
+
+每次连接时通过加密握手验证身份
+
+比 HTTPS 更安全，推荐用于专业开发环境
+
+##### 主要区别：
+
+协议不同：一个用于 HTTPS，一个用于 SSH
+
+安全级别：SSH 更安全，credential.helper store 是明文存储
+
+使用场景：SSH 需要密钥对设置，适合开发者；credential.helper 适合简单场景
+
+存储内容：SSH 存储加密密钥，credential.helper 存储明文密码
+
 ### Git 的使用
 
 #### 初始化设置
@@ -149,6 +183,12 @@ git rm 文件名
 
 git rm -r *（递归删除所有文件及子目录）
 
+#### SSH配置
+
+##### 生成SSH秘钥
+
+ssh-keygen -t rsa -b 4096
+
 
 
 #### 状态与日志
@@ -199,42 +239,3 @@ git diff HEAD~ HEAD
 
 git diff HEAD~N HEAD
 
-#### SSH配置
-
-##### 生成SSH秘钥
-
-ssh-keygen -t rsa -b 4096
-
-#### git config --global credential.helper store 与 SSH 秘钥
-
-##### credential.helper store
-
-用于 HTTPS 协议的 Git 操作
-
-将你的 HTTPS 凭据（用户名和密码）以明文形式存储在 ~/.git-credentials 文件中
-
-下次访问 HTTPS 仓库时自动使用这些凭据
-
-安全性较低，因为密码是明文存储的
-
-##### SSH 密钥
-
-用于 SSH 协议的 Git 操作
-
-使用非对称加密技术（公钥/私钥对）
-
-公钥上传到 Git 服务器（如 GitHub），私钥保留在本地
-
-每次连接时通过加密握手验证身份
-
-比 HTTPS 更安全，推荐用于专业开发环境
-
-##### 主要区别：
-
-协议不同：一个用于 HTTPS，一个用于 SSH
-
-安全级别：SSH 更安全，credential.helper store 是明文存储
-
-使用场景：SSH 需要密钥对设置，适合开发者；credential.helper 适合简单场景
-
-存储内容：SSH 存储加密密钥，credential.helper 存储明文密码
