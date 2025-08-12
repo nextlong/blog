@@ -2,7 +2,7 @@
 title: Git 学习笔记
 description: Git 学习笔记
 slug: Git
-date: 2025-08-11 22:00:00+8000
+date: 2025-08-11 22:00:00+0800
 categories:
     - 扩展知识
 tags:
